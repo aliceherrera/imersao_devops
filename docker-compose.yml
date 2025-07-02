@@ -1,0 +1,14 @@
+services:
+  # Serviço da sua aplicação Python/FastAPI
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual (.)
+    # Isso utiliza o seu Dockerfile existente.
+    build: .
+    # Mapeia a porta 8000 do seu computador para a porta 8000 do contêiner
+    container_name: api
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual (código-fonte) dentro do contêiner no diretório /app
+    # Isso permite que o --reload do uvicorn funcione, refletindo as alterações do código em tempo real.
+    volumes:
+      - .:/app
